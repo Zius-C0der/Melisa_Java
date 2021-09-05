@@ -26,4 +26,6 @@ public class App {
     public static int sumOperation(int number1, int number2) {
         return number1 + number2;
     }
+    public static int subOperation(int number1, int number2) {}
 }
+
