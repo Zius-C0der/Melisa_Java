@@ -42,6 +42,7 @@ public class App {
         System.out.println(relationDetermin("Orhan"));
         System.out.println(licenceDetermin("Alper"));
         candidateAgeDetermin (18);
+        bmiDetermin (55,165);
     }
 
     public static int sumOperation(int number1, int number2) {
@@ -167,8 +168,25 @@ public class App {
 
     //TODO 2 sayi boy ve kilo BMI hesaplayip ona kategori
 
+    public static void bmiDetermin(int weight, int height) {
+        if ((weight*10000)/ (height*height) < 18) {
+            System.out.println("Underweight");
+        }
+
+        else if ((weight*10000)/ (height*height) <= 25) {
+            System.out.println("Healthy Weight");
+        }
+
+        else if ((weight*10000)/ (height*height) < 30) {
+            System.out.println("Overweight");
+        }
+
+        else {
+            System.out.println("Obesity");
+        }
 
 
+    }
 }
 
 
