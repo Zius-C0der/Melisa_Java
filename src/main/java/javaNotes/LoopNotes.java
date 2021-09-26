@@ -2,11 +2,10 @@ package javaNotes;
 
 public class LoopNotes {
     public static void main(String[] args) {
-        foriLooper(8);
-        whileLooper();
-        pyramid(5);
-
-        reversePyramid(5);
+       foriLooper(8);
+       whileLooper();
+        pyramid(5,"+");
+        reversePyramid(5, "*");
     }
 
     public static void foriLooper(int someNumber) {
@@ -26,23 +25,22 @@ public class LoopNotes {
             melisasAge += n;
         }
     }
-    public static void pyramid (int numberFloors) {
+    public static void pyramid (int numberFloors,String buildBlock) {
         int floorNumber = 0;
-        String buildBlock = "?";
-        String floor = "start";
-        while (floorNumber < numberFloors) {
+        String floor = "";
+        while (floorNumber <= numberFloors) {
             System.out.println(floor);
             floor += buildBlock;
             floorNumber += 1;
         }
 
     }
-    public static void reversePyramid (int numberFloors) {
-        String buildBlock = "*";
+    public static void reversePyramid (int numberFloors, String buildBlock) {
+
         for (int i = 0; i < numberFloors; i++) {
             String floor = "";
 
-            for (int j = 0; j < numberFloors - i; j++) {
+            for (int j = 0; j < numberFloors-i; j++) {
                 floor += buildBlock;
             }
             System.out.println(floor);

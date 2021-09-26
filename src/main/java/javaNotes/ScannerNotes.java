@@ -2,6 +2,7 @@ package javaNotes;
 
 import java.util.Scanner;
 
+import static javaNotes.LoopNotes.pyramid;
 import static javaNotes.LoopNotes.reversePyramid;
 import static javaNotes.MethodAndSwitchNotes.bmiDetermin;
 
@@ -9,7 +10,7 @@ public class ScannerNotes {
 
     public static void main(String[] args) {
         bmiScanner();
-        pyramidScammer();
+        reversePyramidScammer();
     }
 
     public static void bmiScanner ( ){
@@ -20,17 +21,17 @@ public class ScannerNotes {
         int height = scanner.nextInt();
         bmiDetermin (weight, height);
     }
-    public static void pyramidScammer () {
+    public static void reversePyramidScammer () {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Number of floors");
         int floorNumber = scanner.nextInt();
-        reversePyramid (floorNumber);
-
+        System.out.println("Enter Buildblock");
+        String buildBlock = scanner.next();
+        reversePyramid (floorNumber,buildBlock);
+        pyramid(floorNumber, buildBlock);
     }
-        // Scanner pyramid ama buildblocks terminalden girilsin
-    //   * böyle piramid
-    //  ***
-    // *****
-    //*******
+
+
+
 
 }
