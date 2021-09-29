@@ -1,13 +1,18 @@
 package javaNotes;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import static java.util.Map.entry;
 
 public class MapNotes20210926 {
-    //map`te "Key Word" ve "Value" var.  Map <"Key Word","Value> her ikisi de int, String veya baöka bir map de olabilir.
+    //map`te "Key Word" ve "Value" var.  Map <"Key Word","Value"> her ikisi de int, String veya baska bir map de olabilir.
 
     public static void main(String[] args) {
+
+        fillPeopleMap();
+        //System.out.println(people);
+
         familyConnections.put("babam","Orhan");
         familyConnections.put("esim", "Alper");
         familyConnections.put("kedim","Sissi");
@@ -17,14 +22,21 @@ public class MapNotes20210926 {
         personHeight.put("Sissi",30);
         personHeight.put("Timur",72);
 
-        System.out.println(familyConnections);
-        System.out.println(familyConnections.get("babam"));
-        mapLooper();
+        //System.out.println(familyConnections);
+        //System.out.println(familyConnections.get("babam"));
+        //mapLooper();
 
-        fillPeopleMap();
-        System.out.println(people);
+        //fillPeopleMap();
 
-        heightDetermin();
+       // heightDetermin();
+
+       //peopleAttributesLooper();
+
+        //bookChecker();
+
+        //peopleHeightDetermin();
+
+        peopleBmiDetermin();
     }
     public static Map<String,String> familyConnections = new HashMap<>();
 
@@ -44,7 +56,7 @@ public class MapNotes20210926 {
         }
     }
 
-    // TODO heiht map burada boy ve kisi ismi map loop boyu 1,75 altinda kisa ustunde olanlar uzun
+    // TODO height map burada boy ve kisi ismi map loop boyu 1,75 altinda kisa ustunde olanlar uzun
 
     public static void heightDetermin() {
         for (String key:personHeight.keySet()) {
@@ -91,14 +103,66 @@ public class MapNotes20210926 {
         attributes.put("age", "24");
 
         people.put("Timur",attributes);
+
+        //for Sissi
+        attributes = new HashMap<>();
+        attributes.put("height","30");
+        attributes.put("weight", "6");
+        attributes.put("eye color", "yellow");
+        attributes.put("favorite book", "how to kill a mockingbird");
+        attributes.put("age", "7");
+
+        people.put("Sissi",attributes);
     }
 
-
-
     //TODO people map icerisince tum kisilerin tüm özelliklerini print ama ayri ayri
+
+    public static void peopleAttributesLooper(){;
+        for (String person:people.keySet()) {
+            for (String attribute:people.get(person).keySet()) {
+                System.out.println(person + " "+ attribute + " " + people.get(person).get(attribute));
+            }
+        }
+    }
+
     //TODO favori kitabi One billon dollar olan kisinin ismini yazdirma methodu
-    //TODO boyu 1,80 üzeinde olanalri yazdiran method
+
+    public static void bookChecker () {
+        for (String key :people.keySet()) {
+            boolean condition = people.get(key).get("favorite book").equalsIgnoreCase("One Billion Dollar");
+            if (condition) {
+                System.out.println(key);
+                return;
+            }
+        }
+    }
+
+    //TODO boyu 1,80 üzeinde olanlari yazdiran method
+
+    public static void peopleHeightDetermin() {
+
+        for (String key:people.keySet()) {
+            if (TypeConversions20210926.strToInt(people.get(key).get("height")) > 180){
+                System.out.println( key + " you are tall");
+            }
+            else if (TypeConversions20210926.strToInt(people.get(key).get("height")) > 160){
+                System.out.println( key + " you are ok");
+            }
+            else
+                System.out.println( key + " you are small");
+        }
+    }
+
     //TODO BMI cok az veya cok fazla olan kisileri göstersin
+
+    public static void peopleBmiDetermin() {
+
+        for (String key:people.keySet()) {
+            System.out.println(key + ":");
+            MethodAndSwitchNotes.bmiDetermin(TypeConversions20210926.strToInt(people.get(key).get("weight")), TypeConversions20210926.strToInt(people.get(key).get("height")));
+        }
+    }
+
     //TODO people icerisinden yasi kamyon ehtiyeti alabilenler
     //TODO kisilerin yaslari toplami
     //TODO scanner kullanark konsola isim girilecek sonra attribute girilecek ona göre bilgileri verecek.

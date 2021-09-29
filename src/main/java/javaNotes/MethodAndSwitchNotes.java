@@ -116,11 +116,9 @@ public class MethodAndSwitchNotes {
         if ((weight*10000)/ (height*height) < 18) {
             System.out.println("Underweight");
         }
-
         else if ((weight*10000)/ (height*height) <= 25) {
             System.out.println("Healthy Weight");
         }
-
         else if ((weight*10000)/ (height*height) < 30) {
             System.out.println("Overweight");
         }
