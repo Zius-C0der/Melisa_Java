@@ -1,12 +1,18 @@
 package javaNotes;
 
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
+
 import static java.util.Map.entry;
+import static javaNotes.MethodAndSwitchNotes.bmiDetermin;
 
 public class MapNotes20210926 {
     //map`te "Key Word" ve "Value" var.  Map <"Key Word","Value"> her ikisi de int, String veya baska bir map de olabilir.
+    // map acma Map<String,String> familyConnections = new HashMap<>();
+    // map icini doldurma familyConnections.put("babam","Orhan");
 
     public static void main(String[] args) {
 
@@ -30,13 +36,25 @@ public class MapNotes20210926 {
 
        // heightDetermin();
 
-       //peopleAttributesLooper();
+      // peopleAttributesLooper();
+        //peopleEyeColorLooper();
 
         //bookChecker();
 
         //peopleHeightDetermin();
 
-        peopleBmiDetermin();
+       // peopleBmiDetermin();
+
+        //happyMap();
+        //attributeList();
+        //peopleCharacteristic();
+
+       // bookChecker2();
+
+        //truckLicence();
+
+        //ageSum();
+        peopleScanner();
     }
     public static Map<String,String> familyConnections = new HashMap<>();
 
@@ -61,10 +79,10 @@ public class MapNotes20210926 {
     public static void heightDetermin() {
         for (String key:personHeight.keySet()) {
             if (personHeight.get(key) > 175){
-                System.out.println( key + " you are huge");
+                System.out.println( key + " you are tall");
             }
             else {
-                System.out.println(key + " you are small");
+                System.out.println(key + " you are short");
                 }
         }
     }
@@ -117,11 +135,26 @@ public class MapNotes20210926 {
 
     //TODO people map icerisince tum kisilerin tüm özelliklerini print ama ayri ayri
 
+    public static void peopleCharacteristic(){
+        System.out.println(people);
+        System.out.println(people.get("Sissi").get("age"));
+
+    }
+
     public static void peopleAttributesLooper(){;
         for (String person:people.keySet()) {
             for (String attribute:people.get(person).keySet()) {
                 System.out.println(person + " "+ attribute + " " + people.get(person).get(attribute));
             }
+        }
+    }
+
+
+    public static void peopleEyeColorLooper(){;
+        for (String person:people.keySet()) {
+            String eyeColor = people.get(person).get("eye color");
+            System.out.println(person + " is " + eyeColor + " eyed.");
+
         }
     }
 
@@ -136,6 +169,15 @@ public class MapNotes20210926 {
             }
         }
     }
+
+    public static void bookChecker2 (){
+        for (String key:people.keySet()){
+            if(people.get(key).containsValue("One Billion Dollar")){
+                System.out.println(key);
+            }
+        }
+    }
+
 
     //TODO boyu 1,80 üzeinde olanlari yazdiran method
 
@@ -163,7 +205,66 @@ public class MapNotes20210926 {
         }
     }
 
-    //TODO people icerisinden yasi kamyon ehtiyeti alabilenler
+    // kendi arastirmam
+
+    public static void happyMap(){
+        Map<String, Integer> happy = new HashMap<>();
+        happy.put("a", 10);
+        happy.put("b",3);
+        happy.put("c", 88);
+
+        happy.remove("b");
+        happy.replace("c",1);
+
+        System.out.println(happy.containsValue(10));
+        System.out.println(happy);
+        System.out.println(happy.values());
+    }
+
+    //TODO people icerisinden yasi kamyon ehtiyeti (21 yas) alabilenler
+
+    public static void truckLicence(){
+        for(String key:people.keySet()){
+            if (TypeConversions20210926.strToInt(people.get(key).get("age")) > 21) {
+                System.out.println(key + " you are able to get a truck licene");
+            }
+        }
+    }
+
+
     //TODO kisilerin yaslari toplami
-    //TODO scanner kullanark konsola isim girilecek sonra attribute girilecek ona göre bilgileri verecek.
+    public static void ageSum(){
+        int sum = 0;
+        for(String key:people.keySet()){
+            sum += TypeConversions20210926.strToInt(people.get(key).get("age"));
+        }
+        System.out.println(sum);
+    }
+
+
+    //TODO scanner kullanark konsola isim girilecek sonra attribute girilecek ona göre bilgileri verecek
+    public static void peopleScanner(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter name");
+        String name = scanner.nextLine();
+        System.out.println("Enter attribute");
+        String attribute = scanner.nextLine();
+        scanner.close();
+
+        System.out.println(getAttributeOf(name,attribute));
+
+    }
+
+    public static String getAttributeOf(String name, String attribute){
+        return people.get(name).get(attribute);
+
+    }
+
+
+    //Web Automation with selenium
+    //what is java object oriented programming
+    //Java maps
+    //Java collections
+    //java BDD tools
+
 }

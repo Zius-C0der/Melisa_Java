@@ -19,6 +19,7 @@ public class ScannerNotes {
         int weight = scanner.nextInt();
         System.out.println("Enter height");
         int height = scanner.nextInt();
+        scanner.close();
         bmiDetermin (weight, height);
     }
     public static void reversePyramidScammer () {
