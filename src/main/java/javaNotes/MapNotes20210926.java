@@ -43,7 +43,7 @@ public class MapNotes20210926 {
 
         //peopleHeightDetermin();
 
-       // peopleBmiDetermin();
+       //peopleBmiDetermin();
 
         //happyMap();
         //attributeList();
@@ -54,7 +54,9 @@ public class MapNotes20210926 {
         //truckLicence();
 
         //ageSum();
-        peopleScanner();
+        //peopleScanner();
+
+        longestName();
     }
     public static Map<String,String> familyConnections = new HashMap<>();
 
@@ -258,6 +260,12 @@ public class MapNotes20210926 {
     public static String getAttributeOf(String name, String attribute){
         return people.get(name).get(attribute);
 
+    }
+
+    public static void longestName(){
+        for (String key:people.keySet()) {
+            System.out.println(key + " " + key.length());
+        }
     }
 
 
